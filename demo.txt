@@ -191,7 +191,7 @@ Done
 
 
 
-/////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 * Write a bash script to take input string from user.  Print output as follows. 
 *         a) If all the characters in input string is upper case, print “Input String is in UPPER case”
 *         b) If all the characters in input string is lower case, print “Input String is in LOWER case”
@@ -251,13 +251,20 @@ else
         num=$((num-1))
     done
 Fi
-/////////////////////////
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 * Write a bash script to take two input string from user. Print the output as follows 
 *         a) If the input string 1 and input String 2 matches, Print “The TWO STRING matches”. The match should not be case sensitive. Means Input String 1 is  “SPARK” and input 2 string is “Spark”, still it should print “The TWO STRING matches”.
 *         b) If the input string 1 and input String 2 does not match, Print “The TWO STRING DOES NOT match”
+
+
+
 #!/bin/bash
-
-
 # Read first string
 echo "Enter First String:"
 read str1
@@ -276,26 +283,7 @@ else
 Fi
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -413,71 +401,78 @@ chmod 755 file.sh
 # Check permissions
 ls -l file.sh
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
 1. Nginx with Docker Volume
-Install Docker
+
+##Install Docker
 sudo apt update
 sudo apt upgrade -y
 sudo apt install docker.io -y
 sudo systemctl enable docker
 sudo systemctl status docker
 docker --version
-Add current user to Docker group
+
+##Add current user to Docker group
 sudo usermod -aG docker $USER
 newgrp docker
-Pull Nginx Image
+
+##Pull Nginx Image
 docker pull nginx
 docker images
-Create Web Page
+
+##Create Web Page
 mkdir webpages
 cd webpages
 echo "Hi from CDAC" > index.html
 cat index.html
 cd ..
-Run Nginx with Volume Mapping
-docker run -d \
---name another-nginx \
--p 8080:80 \
--v $(pwd)/webpages:/usr/share/nginx/html \
-nginx
-Check Running Containers
+
+##Run Nginx with Volume Mapping
+docker run -d --name another-nginx -p 8080:80 -v $(pwd)/webpages:/usr/share/nginx/html nginx
+
+##Check Running Containers
 docker ps
-Open Browser
-http://localhost:8080
-Stop Container
+
+##Open Browser
+##http://localhost:8080
+
+##Stop Container
 docker stop another-nginx
 ________________
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 2. Nginx Without Volume
-Create HTML File
+
+##Create HTML File
 mkdir mysite
 cd mysite
 echo "Hi CDAC" > index.html
-Run Nginx
-docker run -d \
---name simple-nginx \
--p 8080:80 \
-nginx
-Copy File into Container
+
+##Run Nginx
+docker run -d --name simple-nginx -p 8080:80 nginx
+
+##Copy File into Container
 docker cp index.html simple-nginx:/usr/share/nginx/html/index.html
-Open Browser
-http://localhost:8080
+
+##Open Browser
+##http://localhost:8080
 ________________
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 3. Nginx with Default Image
+
 docker pull nginx
 docker images
 docker run -d --name mynginx -p 8080:80 nginx
 ________________
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -502,29 +497,31 @@ ________________
 
 
 5. Git Merge Conflict Practical
-Clone Repository
+
+##Clone Repository
 git clone <repository-url>
 cd <repository-name>
-Create Feature Branch 1
+##Create Feature Branch 1
 git checkout -b feature1
 echo "First line" > demo.txt
 git add .
 git commit -m "feature1 branch"
-Switch to Main
+##Switch to Main
 git checkout main
-Create Feature Branch 2
+##Create Feature Branch 2
 git checkout -b feature2
 echo "Feature2 branch" > demo.txt
 git add .
 git commit -m "branch feature2"
-Return to Main
+##Return to Main
 git checkout main
-Merge Branches
+##Merge Branches
 git merge feature1
 git merge feature2
-Resolve Conflict
+##Resolve Conflict
 cat demo.txt
-Edit the file and remove conflict markers:
+
+##Edit the file and remove conflict markers:
 <<<<<<< HEAD
 First line
 =======
@@ -540,25 +537,25 @@ git push origin main
 git status
 
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 6. Linux Group Commands
-View Existing Groups
+#View Existing Groups
 groups
-Create a Group
+#Create a Group
 sudo groupadd marketing
 getent group marketing
-Rename Group
+#Rename Group
 sudo groupmod -n sales marketing
-Add User to Group
+#Add User to Group
 sudo usermod -aG marketing sanket
-Add Multiple Users to Group
+#Add Multiple Users to Group
 sudo gpasswd -a bob marketing
-Repeat for more users:
+#Repeat for more users:
 sudo gpasswd -a alice marketing
 sudo gpasswd -a john marketing
-Remove User from Group
+#Remove User from Group
 sudo gpasswd -d bob marketing
-Delete Group
+#Delete Group
 sudo groupdel sales
 ________________
