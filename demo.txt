@@ -559,6 +559,18 @@ docker push sanket9850/my-java-app
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+git init
+nano notes.txt
+git add notes.txt
+git commit -m "Initial commit on main branch"
+git checkout -b feature1
+nano notes.txt
+git add notes.txt
+git commit -m "Apple branch changed color to Green"
+git branch
+git checkout master
+git merge feature1
+git merge feature2
+cat notes.txt
 
 
