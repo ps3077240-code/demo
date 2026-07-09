@@ -572,5 +572,14 @@ git checkout master
 git merge feature1
 git merge feature2
 cat notes.txt
+git add notes.txt
+git commit -m "resolve chnages"
+git log --oneline --graph
+git log
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+docker login -u sanket9850
+password- sanket123
+docker commit day_nginx sanket9850/day_nginx
+docker push sanket9850/day_nginx
 
